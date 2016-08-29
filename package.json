@@ -15,6 +15,6 @@
   "scripts": {
     "babel": "babel",
     "test": "make --jobs=2 && tap test/*.es6.js --coverage",
-    "posttest": "tap --coverage-report=lcov | codecov"
+    "posttest": "tap --coverage-report=lcov > coverage.json && codecov"
   }
 }
