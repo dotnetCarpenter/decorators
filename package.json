@@ -9,10 +9,12 @@
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
+    "codecov": "^1.0.1",
     "tap": "^7.0.0"
   },
   "scripts": {
     "babel": "babel",
-    "test": "make --jobs=2 && tap test/*.es6.js"
+    "test": "make --jobs=2 && tap test/*.es6.js --coverage",
+    "posttest": "tap --coverage-report=lcov | codecov"
   }
 }

@@ -21,10 +21,5 @@ function makeCaching(f) {
 	return decorator
 }
 // No modifications of work are allowed. Your code should reside only in makeCaching.
-function some(collection, f) {
-	for(let item of collection)
-		if(f(item)) return true
-	return false
-}
 
 export default makeCaching
