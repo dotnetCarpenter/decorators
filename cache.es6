@@ -6,11 +6,17 @@ Function f is allowed to have only one argument.
 */
 "use strict";
 
-/*import * as tap from "tap"*/
-
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.work = exports.makeCaching = undefined;
+
+var _tap = require("tap");
+
+var tap = _interopRequireWildcard(_tap);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function work(arg) {
 	return Math.random() * arg;
 }
@@ -33,19 +39,19 @@ var a = work(1);
 
 var b = work(1);
 
-console.log(a == b, "a == b should be true (cached)"); // true (cached)
-work.flush(); // clears the cache
-b = work(1);
-console.log(a == b, "a == b should be false"); // false
+/*console.log( a == b, "a == b should be true (cached)" ) // true (cached)
+work.flush()    // clears the cache
+b = work(1)
+console.log( a == b, "a == b should be false" ) // false
+*/
+tap.test("caching", function (t) {
+	t.plan(2);
 
-/*tap.test("caching", (t) => {
-t.plan(2)
-
-t.ok( a == b, "a == b should be true (cached)" ) // true (cached)
-	work.flush()    // clears the cache
-	b = work(1)
-	t.not( a == b, "a == b should be false" ) // false
-})*/
+	t.ok(a == b, "a == b should be true (cached)"); // true (cached)
+	work.flush(); // clears the cache
+	b = work(1);
+	t.not(a == b, "a == b should be false"); // false
+});
 // No modifications of work are allowed. Your code should reside only in makeCaching.
 
 exports.makeCaching = makeCaching;
