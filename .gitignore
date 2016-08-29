@@ -1,4 +1,4 @@
 node_modules
 .vscode
-v8.6.2.txt
+v8.6.*.txt
 jsconfig.json
