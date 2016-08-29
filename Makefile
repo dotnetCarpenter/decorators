@@ -4,9 +4,9 @@ DIST_FILES = $(patsubst %.js, %.es6.js, $(SOURCE_FILES) )
 all: $(DIST_FILES)
 .phony: list
 
-build: $(SOURCE_FILES)
-	@echo "Building $@ with babel"
-	npm run babel $< --out-file $@
+%.es6.js: %.js
+	@echo "Building $@ with babel from $<"
+	npm run babel -- $< --out-file $@
 
 list:
 	@echo $(SOURCE_FILES)

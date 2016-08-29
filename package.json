@@ -12,8 +12,7 @@
     "tap": "^7.0.0"
   },
   "scripts": {
-    "babel": "babel --",
-    "build": "babel cache.js --out-file cache.es6.js & babel test/cache.js --out-file test/cache.es6.js",
-    "test": "tap test/*.es6.js"
+    "babel": "babel",
+    "test": "make --jobs=2 && tap test/*.es6.js"
   }
 }

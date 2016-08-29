@@ -9,24 +9,10 @@ Function f is allowed to have only one argument.
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-function work(...args) {
-	return args.reduce((a, b) => a + Math.random() * b, Math.random());
-}
 function makeCaching(f) {
 	const cache = new Map();
 
-	/*cache.get = seekKey => {
- 	let currentKey
- 	return some(cache.keys(), cacheKey => {
- 		currentKey = cacheKey
- 		return seekKey === cacheKey
- 	}) ? currentKey : null
- }*/
-
-	decorator.flush = cache.clear.bind(cache); /*() => {
-                                            forEach(cache, v => { v = undefined } ) // explicit set values = null for complicated environment GC
-                                            cache = {} // create a new object
-                                            }*/
+	decorator.flush = cache.clear.bind(cache);
 
 	function decorator(...args) {
 		const key = args.join("@");
@@ -40,10 +26,4 @@ function some(collection, f) {
 	return false;
 }
 
-/*function forEach(collection, f) {
-	for(let item of collection)
-		f(item)
-}*/
-
-exports.makeCaching = makeCaching;
-exports.work = work;
+exports.default = makeCaching;

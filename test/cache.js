@@ -1,7 +1,9 @@
 "use strict"
 
 import * as tap from "tap"
-import {makeCaching, work} from "../cache.es6"
+import makeCaching from "../cache.es6"
+
+function work(...args) { return args.reduce((a,b) => a + Math.random()*b, Math.random()) }
 
 tap.test("simple caching", (t) => {
 	t.plan(2)
