@@ -1,0 +1,4 @@
+node_modules
+.vscode
+v8.6.2.txt
+jsconfig.json

@@ -1,0 +1,11 @@
+{
+  "description": "http://javascript.info/tutorial/decorators",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-latest": "^6.14.0",
+    "tap": "^7.0.0"
+  },
+  "scripts": {
+    "babel": "babel --"
+  }
+}
