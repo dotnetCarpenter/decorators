@@ -9,12 +9,11 @@
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
-    "babel-preset-latest": "^6.14.0",
     "tap": "^7.0.0"
   },
   "scripts": {
     "babel": "babel --",
-    "build": "babel cache.js --out-file cache.es6 & babel test/cache.js --out-file test/cache.es6",
-    "test": "tap test/cache.es6"
+    "build": "babel cache.js --out-file cache.es6.js & babel test/cache.js --out-file test/cache.es6.js",
+    "test": "tap test/*.es6.js"
   }
 }

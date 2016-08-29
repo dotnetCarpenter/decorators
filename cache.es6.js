@@ -9,24 +9,29 @@ Function f is allowed to have only one argument.
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-function work(arg) {
-	return Math.random() * arg;
+function work(...args) {
+	return args.reduce((a, b) => a + Math.random() * b, Math.random());
 }
 function makeCaching(f) {
-	let cache = [];
+	let cache = {};
 
 	decorator.flush = () => {
-		cache.forEach(v => {
+		forEach(cache, v => {
 			v = undefined;
 		}); // explicit set values = null for complicated environment GC
-		cache = []; // create a new array
+		cache = {}; // create a new object
 	};
-	function decorator(oneArg) {
-		return cache[oneArg] ? cache[oneArg] : cache[oneArg] = f(oneArg), cache[oneArg];
+	function decorator(...args) {
+		const key = args.join("@");
+		return cache[key] ? cache[key] : cache[key] = f(...args), cache[key];
 	}
 	return decorator;
 }
 // No modifications of work are allowed. Your code should reside only in makeCaching.
+
+function forEach(collection, f) {
+	for (let item in collection) f(item);
+}
 
 exports.makeCaching = makeCaching;
 exports.work = work;
