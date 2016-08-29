@@ -3,7 +3,7 @@
 import * as tap from "tap"
 import {makeCaching, work} from "../cache.es6"
 
-tap.test("caching", (t) => {
+tap.test("simple caching", (t) => {
 	t.plan(2)
 
 	const memWork = makeCaching(work)
