@@ -6,14 +6,12 @@ Function f is allowed to have only one argument.
 */
 "use strict"
 
-import * as tap from "tap"
-
 function work(arg) { return Math.random()*arg }
 function makeCaching(f) {
 	let cache = []
 
 	decorator.flush = () => {
-		/*cache.forEach( (v) = { v = undefined } ) // explicit set values = null for stupid gc*/
+		cache.forEach( (v) => { v = undefined } ) // explicit set values = null for complicated environment GC
 		cache = [] // create a new array
 	}
 	function decorator(oneArg) {
@@ -24,26 +22,6 @@ function makeCaching(f) {
 	}
 	return decorator
 }
-
-work = makeCaching(work);
-
-var a = work(1);
-
-var b = work(1);
-
-/*console.log( a == b, "a == b should be true (cached)" ) // true (cached)
-work.flush()    // clears the cache
-b = work(1)
-console.log( a == b, "a == b should be false" ) // false
-*/
-tap.test("caching", (t) => {
-t.plan(2)
-
-t.ok( a == b, "a == b should be true (cached)" ) // true (cached)
-	work.flush()    // clears the cache
-	b = work(1)
-	t.not( a == b, "a == b should be false" ) // false
-})
 // No modifications of work are allowed. Your code should reside only in makeCaching.
 
 export {
