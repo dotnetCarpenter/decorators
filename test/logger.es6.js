@@ -4,7 +4,7 @@ var _tap = require("tap");
 
 var tap = _interopRequireWildcard(_tap);
 
-var _logger = require("../logger.es6");
+var _logger = require("../src/logger.es6");
 
 var _logger2 = _interopRequireDefault(_logger);
 

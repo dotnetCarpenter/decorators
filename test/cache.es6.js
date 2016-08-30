@@ -4,7 +4,7 @@ var _tap = require("tap");
 
 var tap = _interopRequireWildcard(_tap);
 
-var _cache = require("../cache.es6");
+var _cache = require("../src/cache.es6");
 
 var _cache2 = _interopRequireDefault(_cache);
 
