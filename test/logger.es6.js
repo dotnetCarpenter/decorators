@@ -27,3 +27,13 @@ tap.test("logging", t => {
 
 	t.like(actual, expected, `should be an array like: "${ expected }"`);
 });
+
+tap.test("logging with default logger", t => {
+	t.plan(1);
+
+	work = (0, _logger2.default)(work);
+	work(1, 2);
+	work(5, 6);
+
+	t.notThrow(work.outputLog, `should not throw when using console.log`);
+});
