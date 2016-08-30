@@ -76,6 +76,19 @@ work = guard(work, guards.zero(1, new RangeError("Second argument to work MUST b
 work(32,0) // will throw a RangeError with the message: "Second argument to work MUST be between 1-100"
 ```
 
+**Custom guard**
+Where `work` takes an object as first argument and we want to throw if a property is *falsy*.
+
+```js
+import {guard} from "src/guard.es6"
+
+work = guard(work, (...args) => {
+	if( !arsg[0].requiredProperty ) throw new TypeError("options.requiredProperty MUST be set")
+	return true
+})
+work({ requiredProperty: undefined }) // will throw
+```
+
 ## How to test
 `npm test`
 
