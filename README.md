@@ -52,7 +52,7 @@ make a mess of otherwise clean functions.
 
 But with a decorator your function will still be clean and
 your can *turn on/off* guards as needed. I suggest your use
-guards while developing and contruct your guards to throw
+guards while developing and construct your guards to throw
 errors. This way, you can write your application and quickly
 spot malfunctioning caller functions. When the application
 is well tested, your can remove the guards and gain better
@@ -72,8 +72,8 @@ Or with a custom error:
 ```js
 import {guard, guards} from "src/guard.es6"
 
-work = guard(work, guards.zero(1, new RangeError("Second argument to work MUST NOT be zero")))
-work(32,0) // will throw a RangeError with the message: "Second argument to work MUST NOT be zero"
+work = guard(work, guards.zero(1, new RangeError("Second argument to work MUST be between 1-100")))
+work(32,0) // will throw a RangeError with the message: "Second argument to work MUST be between 1-100"
 ```
 
 ## How to test
