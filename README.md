@@ -12,7 +12,7 @@ can inspire you to write your own.
 Where `work` is your function, that you want to log calls to.
 
 ```js
-import logger from "../logger.es6"
+import logger from "src/logger.es6"
 
 work = logger(work)
 work(1,2)
@@ -24,7 +24,7 @@ Or if you want to do something with the logs, you can provide your own
 log handler function.
 
 ```js
-import logger from "../logger.es6"
+import logger from "src/logger.es6"
 
 const logs = []
 work = logger(work, log => logs.push(log)) // add a function to be called for each log
@@ -37,11 +37,43 @@ work.outputLog() // will fill the logs array with logs
 Where `slow` is your function, that you want to speed up. 
 
 ```js
-import memoize from "../cache.es6"
+import memoize from "src/cache.es6"
 
 const speedy = memoize(slow)
 let a = speedy(22) // call slow with 22 and return the result
 let b = speedy(22) // return the prevous result
+```
+
+### Guarding
+A *guard* decorator is useful when you want to guard against
+particular arguments to a function. This is known as defensive
+coding and if implemented inside your function, can quickly
+make a mess of otherwise clean functions.
+
+But with a decorator your function will still be clean and
+your can *turn on/off* guards as needed. I suggest your use
+guards while developing and contruct your guards to throw
+errors. This way, you can write your application and quickly
+spot malfunctioning caller functions. When the application
+is well tested, your can remove the guards and gain better
+performance.
+
+Where `work` will return nonsense if the second argument is zero.
+
+```js
+import {guard, guards} from "src/guard.es6"
+
+work = guard(work, guards.zero(1)) // default error for guards.zero is TypeError
+work(32,0) // will throw a TypeError
+```
+
+Or with a custom error:
+
+```js
+import {guard, guards} from "src/guard.es6"
+
+work = guard(work, guards.zero(1, new RangeError("Second argument to work MUST NOT be zero")))
+work(32,0) // will throw a RangeError with the message: "Second argument to work MUST NOT be zero"
 ```
 
 ## How to test
