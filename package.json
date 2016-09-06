@@ -14,7 +14,6 @@
   },
   "scripts": {
     "babel": "babel",
-    "test": "make --jobs=2 && tap test/*.es6.js --coverage",
-    "posttest": "tap --coverage-report=lcov > coverage.json && codecov"
+    "test": "make --jobs=2 && tap test/*.es6.js --coverage-report=json && codecov --file=coverage/coverage-final.json --disable=gcov --token=e2ad30a7-2df2-4f52-baa4-2cdf4734056a"
   }
 }
