@@ -14,7 +14,7 @@ function makeLogging(f, logHandler = console.log) {
 		log.push(args);
 		return f(...args);
 	};
-	logger.outputLog = () => log.forEach(l => logHandler(`${ f.name } is called with ${ l }`));
+	logger.outputLog = () => log.forEach(l => logHandler(`${ f.name || 'anonymous' } is called with ${ l }`));
 	return logger;
 }
 

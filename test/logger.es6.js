@@ -35,5 +35,5 @@ tap.test("logging with default logger", t => {
 	work(1, 2);
 	work(5, 6);
 
-	t.notThrow(work.outputLog, `should not throw when using console.log`);
+	t.notThrow(work.outputLog, "should not throw when using console.log");
 });
