@@ -6,13 +6,14 @@ all: $(DIST_FILES)
 
 %.es5.js: %.js
 	@echo "Building $@ with babel from $<"
-	npm run babel -- --source-maps true --source-map-target $< $< --out-file $@
+	npm run babel -- --source-maps inline $< --out-file $@
 
 list:
 	@echo $(SOURCE_FILES)
 	@echo $(DIST_FILES)
 
 clean:
-	rm **/*.es5.js
-	rm -r coverage
-	rm -r .nyc_output
+	rm -f **/*.es5.js
+	rm -f **/*.es5.js.map
+	rm -rf coverage
+	rm -rf .nyc_output

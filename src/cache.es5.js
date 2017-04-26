@@ -1,0 +1,29 @@
+/*
+Create a function makeCaching(f) which takes a one-argument function f(arg),
+and makes a wrapper over it which caches calls.
+The wrapper should have a static flush() method to flush the cache.
+Function f is allowed to have only one argument.
+Since we have the spread operator we accept multiple arguments
+as an array - hence it's still a single argument.
+*/
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+function makeCaching(f) {
+	const cache = new Map();
+
+	decorator.flush = cache.clear.bind(cache);
+
+	function decorator(...args) {
+		const key = JSON.stringify(args);
+		return cache.has(key) ? cache.get(key) : cache.set(key, f(...args)).get(key);
+	}
+	return decorator;
+}
+// No modifications of work are allowed. Your code should reside only in makeCaching.
+
+exports.default = makeCaching;
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhY2hlLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7OztBQVFBOzs7OztBQUVBLFNBQVMsV0FBVCxDQUFxQixDQUFyQixFQUF3QjtBQUN2QixPQUFNLFFBQVEsSUFBSSxHQUFKLEVBQWQ7O0FBRUEsV0FBVSxLQUFWLEdBQWtCLE1BQU0sS0FBTixDQUFZLElBQVosQ0FBaUIsS0FBakIsQ0FBbEI7O0FBRUEsVUFBUyxTQUFULENBQW1CLEdBQUcsSUFBdEIsRUFBNEI7QUFDM0IsUUFBTSxNQUFNLEtBQUssU0FBTCxDQUFlLElBQWYsQ0FBWjtBQUNBLFNBQU8sTUFBTSxHQUFOLENBQVUsR0FBVixJQUNOLE1BQU0sR0FBTixDQUFVLEdBQVYsQ0FETSxHQUVMLE1BQU0sR0FBTixDQUFVLEdBQVYsRUFBZSxFQUFFLEdBQUcsSUFBTCxDQUFmLEVBQ0UsR0FERixDQUNNLEdBRE4sQ0FGRjtBQUlBO0FBQ0QsUUFBTyxTQUFQO0FBQ0E7QUFDRDs7a0JBRWUsVyIsImZpbGUiOiJjYWNoZS5lczUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuQ3JlYXRlIGEgZnVuY3Rpb24gbWFrZUNhY2hpbmcoZikgd2hpY2ggdGFrZXMgYSBvbmUtYXJndW1lbnQgZnVuY3Rpb24gZihhcmcpLFxuYW5kIG1ha2VzIGEgd3JhcHBlciBvdmVyIGl0IHdoaWNoIGNhY2hlcyBjYWxscy5cblRoZSB3cmFwcGVyIHNob3VsZCBoYXZlIGEgc3RhdGljIGZsdXNoKCkgbWV0aG9kIHRvIGZsdXNoIHRoZSBjYWNoZS5cbkZ1bmN0aW9uIGYgaXMgYWxsb3dlZCB0byBoYXZlIG9ubHkgb25lIGFyZ3VtZW50LlxuU2luY2Ugd2UgaGF2ZSB0aGUgc3ByZWFkIG9wZXJhdG9yIHdlIGFjY2VwdCBtdWx0aXBsZSBhcmd1bWVudHNcbmFzIGFuIGFycmF5IC0gaGVuY2UgaXQncyBzdGlsbCBhIHNpbmdsZSBhcmd1bWVudC5cbiovXG5cInVzZSBzdHJpY3RcIlxuXG5mdW5jdGlvbiBtYWtlQ2FjaGluZyhmKSB7XG5cdGNvbnN0IGNhY2hlID0gbmV3IE1hcCgpXG5cblx0ZGVjb3JhdG9yLmZsdXNoID0gY2FjaGUuY2xlYXIuYmluZChjYWNoZSlcblxuXHRmdW5jdGlvbiBkZWNvcmF0b3IoLi4uYXJncykge1xuXHRcdGNvbnN0IGtleSA9IEpTT04uc3RyaW5naWZ5KGFyZ3MpXG5cdFx0cmV0dXJuIGNhY2hlLmhhcyhrZXkpID9cblx0XHRcdGNhY2hlLmdldChrZXkpIDpcblx0XHRcdFx0Y2FjaGUuc2V0KGtleSwgZiguLi5hcmdzKSlcblx0XHRcdFx0XHQuZ2V0KGtleSlcblx0fVxuXHRyZXR1cm4gZGVjb3JhdG9yXG59XG4vLyBObyBtb2RpZmljYXRpb25zIG9mIHdvcmsgYXJlIGFsbG93ZWQuIFlvdXIgY29kZSBzaG91bGQgcmVzaWRlIG9ubHkgaW4gbWFrZUNhY2hpbmcuXG5cbmV4cG9ydCBkZWZhdWx0IG1ha2VDYWNoaW5nXG4iXX0=
