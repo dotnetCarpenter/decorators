@@ -4,7 +4,7 @@ var _tap = require("tap");
 
 var tap = _interopRequireWildcard(_tap);
 
-var _logger = require("../src/logger.es6");
+var _logger = require("../src/logger.es5");
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -25,7 +25,7 @@ tap.test("logging", t => {
 	work(5, 6);
 	work.outputLog(); // <-- should call our log handler
 
-	t.like(actual, expected, `should be an array like: "${ expected }"`);
+	t.like(actual, expected, `should be an array like: "${expected}"`);
 });
 
 tap.test("logging with default logger", t => {

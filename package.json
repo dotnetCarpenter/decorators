@@ -1,6 +1,6 @@
 {
   "name": "decorators",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/dotnetCarpenter/decorators.git"
@@ -9,11 +9,11 @@
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
-    "codecov": "^1.0.1",
-    "tap": "^7.0.0"
+    "codecov": "^2.0.1",
+    "tap": "^10.0.0"
   },
   "scripts": {
     "babel": "babel",
-    "test": "make --jobs=2 && tap test/*.es6.js --coverage-report=json && codecov --file=coverage/coverage-final.json --disable=gcov --token=e2ad30a7-2df2-4f52-baa4-2cdf4734056a"
+    "test": "make --jobs=2 && tap test/*.es5.js --coverage-report=json && codecov --file=coverage/coverage-final.json --disable=gcov --token=e2ad30a7-2df2-4f52-baa4-2cdf4734056a"
   }
 }
