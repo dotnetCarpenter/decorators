@@ -5,14 +5,14 @@
 http://javascript.info/tutorial/decorators
 
 ## API
-This is just small snippets but perhaps they
-can inspire you to write your own. 
+This is just small snippets, but perhaps they
+can inspire you to write your own decorators. 
 
 ### Logging
 Where `work` is your function, that you want to log calls to.
 
 ```js
-import logger from "src/logger.es6"
+import logger from "src/logger.es5"
 
 work = logger(work)
 work(1,2)
@@ -24,7 +24,7 @@ Or if you want to do something with the logs, you can provide your own
 log handler function.
 
 ```js
-import logger from "src/logger.es6"
+import logger from "src/logger.es5"
 
 const logs = []
 work = logger(work, log => logs.push(log)) // add a function to be called for each log
@@ -37,11 +37,45 @@ work.outputLog() // will fill the logs array with logs
 Where `slow` is your function, that you want to speed up. 
 
 ```js
-import memoize from "src/cache.es6"
+import memoize from "src/cache.es5"
 
 const speedy = memoize(slow)
 let a = speedy(22) // call slow with 22 and return the result
-let b = speedy(22) // return the prevous result
+let b = speedy(22) // returns the prevous result
+```
+
+`memoize` can also have a context. Which is useful when you use
+prototypal inheritance or objects.
+
+```js
+import memoize from "src/cache.es5"
+
+class MyClass {
+	constructor() {
+		this.slow = slow
+	}
+	execute(values) {
+		return this.slow(values)
+	}
+}
+
+const myClass = new MyClass
+const speedy = memoize(myClass.execute, myClass)
+let a = speedy(22) // call slow with 22 and return the result
+let b = speedy(22) // returns the prevous result
+```
+
+```js
+const myObject = {
+	slow,
+	execute(values) {
+		return this.slow(values)
+	}
+}
+
+const speedy = memoize(myObject.execute, myObject)
+let a = speedy(22) // call slow with 22 and return the result
+let b = speedy(22) // returns the prevous result
 ```
 
 ### Guarding
@@ -61,7 +95,7 @@ performance.
 Where `work` will return nonsense if the second argument is zero.
 
 ```js
-import {guard, guards} from "src/guard.es6"
+import {guard, guards} from "src/guard.es5"
 
 work = guard(work, guards.zero(1)) // default error for guards.zero is TypeError
 work(32,0) // will throw a TypeError
@@ -70,7 +104,7 @@ work(32,0) // will throw a TypeError
 Or with a custom error:
 
 ```js
-import {guard, guards} from "src/guard.es6"
+import {guard, guards} from "src/guard.es5"
 
 work = guard(work, guards.zero(1, new RangeError("Second argument to work MUST be between 1-100")))
 work(32,0) // will throw a RangeError with the message: "Second argument to work MUST be between 1-100"
@@ -80,7 +114,7 @@ work(32,0) // will throw a RangeError with the message: "Second argument to work
 Where `work` takes an object as first argument and we want to throw if a property is *falsy*.
 
 ```js
-import {guard} from "src/guard.es6"
+import {guard} from "src/guard.es5"
 
 work = guard(work, (...args) => {
 	if( !arsg[0].requiredProperty ) throw new TypeError("options.requiredProperty MUST be set")

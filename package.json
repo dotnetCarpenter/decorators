@@ -1,16 +1,16 @@
 {
   "name": "decorators",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/dotnetCarpenter/decorators.git"
   },
   "description": "http://javascript.info/tutorial/decorators",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
-    "codecov": "^2.0.1",
-    "tap": "^10.0.0"
+    "babel-cli": "~6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "~6.24.1",
+    "codecov": "~2.1.0",
+    "tap": "~10.3.2"
   },
   "scripts": {
     "babel": "babel",

@@ -8,7 +8,7 @@ as an array - hence it's still a single argument.
 */
 "use strict"
 
-function makeCaching(f) {
+function makeCaching(f, context) {
 	const cache = new Map()
 
 	decorator.flush = cache.clear.bind(cache)
@@ -17,7 +17,7 @@ function makeCaching(f) {
 		const key = JSON.stringify(args)
 		return cache.has(key) ?
 			cache.get(key) :
-				cache.set(key, f(...args))
+				cache.set(key, context ? f.call(context, ...args) : f(...args))	// context switching is expensive so we only do it if necessary
 					.get(key)
 	}
 	return decorator
