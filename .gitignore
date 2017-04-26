@@ -1,9 +1,15 @@
+# Transpiled files
+**/*.es5.js
+
+# NPM
 node_modules
 
+# Code Coverage
 .nyc_output
 coverage
 coverage.json
 
+# IDE
 .vscode
 v8.6.*.txt
 jsconfig.json
