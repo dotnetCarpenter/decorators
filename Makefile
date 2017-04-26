@@ -6,7 +6,7 @@ all: $(DIST_FILES)
 
 %.es5.js: %.js
 	@echo "Building $@ with babel from $<"
-	npm run babel -- $< --out-file $@
+	npm run babel -- --source-maps true --source-map-target $< $< --out-file $@
 
 list:
 	@echo $(SOURCE_FILES)
