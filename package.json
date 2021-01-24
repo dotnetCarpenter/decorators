@@ -7,10 +7,10 @@
   },
   "description": "http://javascript.info/tutorial/decorators",
   "devDependencies": {
-    "babel-cli": "~6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "~6.24.1",
-    "codecov": "~2.1.0",
-    "tap": "~10.3.2"
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "codecov": "^3.8.1",
+    "tap": "^10.3.2"
   },
   "scripts": {
     "babel": "babel",
