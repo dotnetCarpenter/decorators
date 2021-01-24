@@ -4,9 +4,13 @@
 
 http://javascript.info/tutorial/decorators
 
+
+> Note: `.es5` extension does not mean that the file is in EcmaScript 5.1
+> but that the file export using CommonJS. Sorry, but the changing the file
+> extension would be a breaking change for little benefit.
 ## API
 This is just small snippets, but perhaps they
-can inspire you to write your own decorators. 
+can inspire you to write your own decorators.
 
 ### Logging
 Where `work` is your function, that you want to log calls to.
@@ -34,7 +38,7 @@ work.outputLog() // will fill the logs array with logs
 ```
 
 ### Caching
-Where `slow` is your function, that you want to speed up. 
+Where `slow` is your function, that you want to speed up.
 
 ```js
 import memoize from "src/cache.es5"
