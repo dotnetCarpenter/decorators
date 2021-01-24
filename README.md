@@ -6,7 +6,7 @@ http://javascript.info/tutorial/decorators
 
 
 > Note: `.es5` extension does not mean that the file is in EcmaScript 5.1
-> but that the file export using CommonJS. Sorry, but the changing the file
+> but that the file export using CommonJS. Sorry, but changing the file
 > extension would be a breaking change for little benefit.
 ## API
 This is just small snippets, but perhaps they
