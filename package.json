@@ -11,7 +11,7 @@
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "codecov": "^3.8.1",
-    "tap": "^10.3.2"
+    "tap": "^14.11.0"
   },
   "scripts": {
     "babel": "babel",

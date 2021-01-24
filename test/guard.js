@@ -1,6 +1,6 @@
 "use strict"
 
-import * as tap from "tap"
+import tap from "tap"
 import {guard, guards} from "../src/guard.es5"
 
 function devide(a, b) {

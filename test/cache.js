@@ -1,6 +1,6 @@
 "use strict"
 
-import * as tap from "tap"
+import tap from "tap"
 import makeCaching from "../src/cache.es5"
 
 function work(...args) { return args.reduce((a,b) => a + Math.random()*b, Math.random()) }

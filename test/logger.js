@@ -1,6 +1,6 @@
 "use strict"
 
-import * as tap from "tap"
+import tap from "tap"
 import makeLogging from "../src/logger.es5"
 
 function work(a,b) { /* arbitrary function */ }
