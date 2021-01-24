@@ -114,7 +114,7 @@ tap.test("context caching (prototype/object)", (t) => {
 		return this.work(values)
 	}
 
-	class MyClassSuger {
+	class MyClassSugar {
 		constructor() {
 			this.work = work
 		}
@@ -144,7 +144,7 @@ tap.test("context caching (prototype/object)", (t) => {
 
 
 	/** class prototypal context **/
-	const myClassSugar = new MyClassSuger
+	const myClassSugar = new MyClassSugar
 	memWork = makeCaching(myClassSugar.execute, myClassSugar)
 	a = memWork(1)
 	b = memWork(1)

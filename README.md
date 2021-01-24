@@ -45,7 +45,7 @@ import memoize from "src/cache.es5"
 
 const speedy = memoize(slow)
 let a = speedy(22) // call slow with 22 and return the result
-let b = speedy(22) // returns the prevous result
+let b = speedy(22) // returns the previous result
 ```
 
 `memoize` can also have a context. Which is useful when you use
@@ -66,7 +66,7 @@ class MyClass {
 const myClass = new MyClass
 const speedy = memoize(myClass.execute, myClass)
 let a = speedy(22) // call slow with 22 and return the result
-let b = speedy(22) // returns the prevous result
+let b = speedy(22) // returns the previous result
 ```
 
 ```js
@@ -79,7 +79,7 @@ const myObject = {
 
 const speedy = memoize(myObject.execute, myObject)
 let a = speedy(22) // call slow with 22 and return the result
-let b = speedy(22) // returns the prevous result
+let b = speedy(22) // returns the previous result
 ```
 
 ### Guarding
@@ -121,7 +121,7 @@ Where `work` takes an object as first argument and we want to throw if a propert
 import {guard} from "src/guard.es5"
 
 work = guard(work, (...args) => {
-	if( !arsg[0].requiredProperty ) throw new TypeError("options.requiredProperty MUST be set")
+	if( !args[0].requiredProperty ) throw new TypeError("options.requiredProperty MUST be set")
 	return true
 })
 work({ requiredProperty: undefined }) // will throw

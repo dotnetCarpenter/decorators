@@ -19,7 +19,7 @@ tap.test("guard for zero", t => {
 tap.test("guard for zero with custom error message", t => {
 	t.plan(1)
 
-	const expected = new TypeError("Don't call devide with zero")
+	const expected = new TypeError("Don't call divide with zero")
 
 	const guardedDivide = guard(divide, guards.zero(1, expected))
 
