@@ -30,12 +30,8 @@ jobs:
       - run: npm install
         env:
           CI: true
+          codecov:
+            token: e2ad30a7-2df2-4f52-baa4-2cdf4734056a
 
-      - name: Unit Test
       - run: npm test
-      #   env:
-      #     CI: true
-      #     codecov:
-      #       token: e2ad30a7-2df2-4f52-baa4-2cdf4734056a
-
-      # - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "🍏 This job's status is ${{ job.status }}."
