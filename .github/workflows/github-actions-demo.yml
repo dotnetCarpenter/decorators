@@ -30,16 +30,18 @@ jobs:
       - run: npm install
         env:
           CI: true
+      - run: make --jobs
       - run: npm test
+      - run: npm run coverage
 
-      # - name: Code Cov
-      #   uses: codecov/codecov-action@v2
-      #   with:
-      #     CI: true
-      #     token: e2ad30a7-2df2-4f52-baa4-2cdf4734056a
-      #     files: ./coverage/lcov.info
-      #     flags: unittests
-      #     fail_ci_if_error: true
-      #     verbose: true
+      - name: Upload to Code Cov
+        uses: codecov/codecov-action@v2
+        with:
+          CI: true
+          token: e2ad30a7-2df2-4f52-baa4-2cdf4734056a
+          files: ./lcov.info
+          flags: unittests
+          fail_ci_if_error: true
+          verbose: true
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
