@@ -11,7 +11,6 @@
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.8",
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
-    "codecov": "^3.8.3",
     "tap": "^16.0.1"
   },
   "scripts": {
