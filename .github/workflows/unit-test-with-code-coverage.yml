@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: ['lts/*']
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -41,6 +41,6 @@ jobs:
           files: ./lcov.info
           flags: unittests
           fail_ci_if_error: true
-          verbose: true
+          verbose: false
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
