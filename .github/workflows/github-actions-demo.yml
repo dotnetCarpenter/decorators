@@ -31,8 +31,8 @@ jobs:
         env:
           CI: true
 
-      # - name: Unit Test
-      # - run: npm test
+      - name: Unit Test
+      - run: npm test
       #   env:
       #     CI: true
       #     codecov:
