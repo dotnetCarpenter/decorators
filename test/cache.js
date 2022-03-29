@@ -18,7 +18,7 @@ tap.test("simple caching", (t) => {
 
 	memWork.flush()	// clears the cache
 	b = memWork(1)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 })
 
 tap.test("dyadic caching", (t) => {
@@ -31,11 +31,11 @@ tap.test("dyadic caching", (t) => {
 	t.equal(a, b, "a === b should be true (cached)")
 
 	b = memWork(2, 4.2)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 
 	memWork.flush()	// clears the cache
 	b = memWork(2, 4)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 })
 
 tap.test("triadic caching", (t) => {
@@ -48,11 +48,11 @@ tap.test("triadic caching", (t) => {
 	t.equal(a, b, "a === b should be true (cached)")
 
 	b = memWork(1, 4.2, 41)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 
 	memWork.flush()	// clears the cache
 	b = memWork(1, 4.2, 41)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 })
 
 tap.test("object caching", (t) => {
@@ -65,11 +65,11 @@ tap.test("object caching", (t) => {
 	t.equal(a, b, "a === b should be true (cached)")
 
 	b = memWork({b:1})
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 
 	memWork.flush()	// clears the cache
 	b = memWork({a:1})
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 
 	memWork.flush()	// clears the cache
 	a = memWork({a:3,b:2,c:5,d:-1})
@@ -79,7 +79,7 @@ tap.test("object caching", (t) => {
 	memWork.flush()	// clears the cache
 	a = memWork({a:3,b:2,c:5,d:-1})
 	b = memWork({a:3,b:2,c:5,d:100})
-	t.notEqual(a, b, "a === b should be false)")
+	t.not(a, b, "a === b should be false)")
 })
 
 tap.test("array caching", (t) => {
@@ -93,7 +93,7 @@ tap.test("array caching", (t) => {
 
 	memWork.flush()	// clears the cache
 	b = memWork.apply(null, [1,2,3])
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 
 
 	/** context can NOT be used to transform input **/
@@ -101,7 +101,7 @@ tap.test("array caching", (t) => {
 	a = memWork([1,2,3])
 	b = memWork([1,2,3])
 
-	t.notEqual(a, b, "a === b should be false - NaN - context can NOT be used to transform input )")
+	t.not(a, b, "a === b should be false - NaN - context can NOT be used to transform input )")
 })
 
 tap.test("context caching (prototype/object)", (t) => {
@@ -140,7 +140,7 @@ tap.test("context caching (prototype/object)", (t) => {
 
 	memWork.flush()	// clears the cache
 	b = memWork(1)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 
 
 	/** class prototypal context **/
@@ -153,7 +153,7 @@ tap.test("context caching (prototype/object)", (t) => {
 
 	memWork.flush()	// clears the cache
 	b = memWork(1)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 
 
 	/** object context **/
@@ -165,5 +165,5 @@ tap.test("context caching (prototype/object)", (t) => {
 	memWork.flush()	// clears the cache
 
 	b = memWork(1)
-	t.notEqual(a, b, "a === b should be false")
+	t.not(a, b, "a === b should be false")
 })

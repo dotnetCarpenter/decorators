@@ -138,5 +138,5 @@ the test suite. Use `npm i` to install.
 
 You can build faster by specifying building in parallel.
 `make -j 2` for building two targets at the time.
-You' should set the `-j` parameter to as many cpu cores,
+You should set the `-j` parameter to as many cpu cores,
 as you have.

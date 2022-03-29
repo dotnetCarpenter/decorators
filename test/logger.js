@@ -16,7 +16,7 @@ tap.test("logging", t => {
 	work(5,6)
 	work.outputLog() // <-- should call our log handler
 
-	t.like(actual, expected, `should be an array like: "${expected}"`)
+	t.match(actual, expected, `should be an array like: "${expected}"`)
 })
 
 tap.test("logging with default logger", t => {
@@ -26,5 +26,5 @@ tap.test("logging with default logger", t => {
 	work(1,2)
 	work(5,6)
 
-	t.notThrow(work.outputLog, "should not throw when using console.log")
+	t.doesNotThrow(work.outputLog, "should not throw when using console.log")
 })

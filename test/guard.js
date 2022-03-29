@@ -12,8 +12,8 @@ tap.test("guard for zero", t => {
 
 	const guardedDivide = guard(divide, guards.zero(1))
 
-	t.notThrow(guardedDivide.bind(null, 5, 1), "should not throw with an input of 5,1")
-	t.throw(guardedDivide.bind(null, 5, 0), new TypeError(), "should throw with an input of 5,0")
+	t.doesNotThrow(guardedDivide.bind(null, 5, 1), "should not throw with an input of 5,1")
+	t.throws(guardedDivide.bind(null, 5, 0), new TypeError(), "should throw with an input of 5,0")
 })
 
 tap.test("guard for zero with custom error message", t => {
@@ -23,5 +23,5 @@ tap.test("guard for zero with custom error message", t => {
 
 	const guardedDivide = guard(divide, guards.zero(1, expected))
 
-	t.throw(guardedDivide.bind(null, 5, 0), expected, "should throw a custom error")
+	t.throws(guardedDivide.bind(null, 5, 0), expected, "should throw a custom error")
 })
