@@ -5,18 +5,16 @@
 http://javascript.info/tutorial/decorators
 
 
-> Note: `.es5` extension does not mean that the file is in EcmaScript 5.1
-> but that the file export using CommonJS. Sorry, but changing the file
-> extension would be a breaking change for little benefit.
 ## API
 This is just small snippets, but perhaps they
 can inspire you to write your own decorators.
+
 
 ### Logging
 Where `work` is your function, that you want to log calls to.
 
 ```js
-import logger from "src/logger.es5"
+import logger from "src/logger.cjs"
 
 work = logger(work)
 work(1,2)
@@ -28,7 +26,7 @@ Or if you want to do something with the logs, you can provide your own
 log handler function.
 
 ```js
-import logger from "src/logger.es5"
+import logger from "src/logger.cjs"
 
 const logs = []
 work = logger(work, log => logs.push(log)) // add a function to be called for each log
@@ -37,11 +35,12 @@ work(5,6)
 work.outputLog() // will fill the logs array with logs
 ```
 
+
 ### Caching
 Where `slow` is your function, that you want to speed up.
 
 ```js
-import memoize from "src/cache.es5"
+import memoize from "src/cache.cjs"
 
 const speedy = memoize(slow)
 let a = speedy(22) // call slow with 22 and return the result
@@ -52,7 +51,7 @@ let b = speedy(22) // returns the previous result
 prototypal inheritance or objects.
 
 ```js
-import memoize from "src/cache.es5"
+import memoize from "src/cache.cjs"
 
 class MyClass {
 	constructor() {
@@ -82,6 +81,7 @@ let a = speedy(22) // call slow with 22 and return the result
 let b = speedy(22) // returns the previous result
 ```
 
+
 ### Guarding
 A *guard* decorator is useful when you want to guard against
 particular arguments to a function. This is known as defensive
@@ -99,7 +99,7 @@ performance.
 Where `work` will return nonsense if the second argument is zero.
 
 ```js
-import {guard, guards} from "src/guard.es5"
+import {guard, guards} from "src/guard.cjs"
 
 work = guard(work, guards.zero(1)) // default error for guards.zero is TypeError
 work(32,0) // will throw a TypeError
@@ -108,7 +108,7 @@ work(32,0) // will throw a TypeError
 Or with a custom error:
 
 ```js
-import {guard, guards} from "src/guard.es5"
+import {guard, guards} from "src/guard.cjs"
 
 work = guard(work, guards.zero(1, new RangeError("Second argument to work MUST be between 1-100")))
 work(32,0) // will throw a RangeError with the message: "Second argument to work MUST be between 1-100"
@@ -118,7 +118,7 @@ work(32,0) // will throw a RangeError with the message: "Second argument to work
 Where `work` takes an object as first argument and we want to throw if a property is *falsy*.
 
 ```js
-import {guard} from "src/guard.es5"
+import {guard} from "src/guard.cjs"
 
 work = guard(work, (...args) => {
 	if( !args[0].requiredProperty ) throw new TypeError("options.requiredProperty MUST be set")
@@ -132,6 +132,7 @@ work({ requiredProperty: undefined }) // will throw
 
 Remember to install the npm modules before running
 the test suite. Use `npm i` to install.
+
 
 ## How to build
 `make`

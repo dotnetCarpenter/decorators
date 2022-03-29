@@ -1,6 +1,6 @@
 # Transpiled files
-# line disabled because codecov needs the transpiled file to not 404  **/*.es5.js
-**/*.es5.js.map
+# line disabled because codecov needs the transpiled file to not 404  **/*.cjs.js
+**/*.cjs.js.map
 
 # NPM
 node_modules
