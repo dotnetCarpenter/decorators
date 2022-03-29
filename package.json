@@ -15,6 +15,6 @@
   },
   "scripts": {
     "babel": "babel",
-    "test": "make --jobs=4 && tap test/*.cjs --coverage-report=json && codecov --file=coverage/coverage-final.json --disable=gcov --token=e2ad30a7-2df2-4f52-baa4-2cdf4734056a"
+    "test": "make --jobs=4 && tap test/*.mjs --coverage-report=json && codecov --file=coverage/coverage-final.json --disable=gcov --token=e2ad30a7-2df2-4f52-baa4-2cdf4734056a"
   }
 }

@@ -1,4 +1,4 @@
-SOURCE_FILES = $(filter-out $(wildcard *.cjs **/*.cjs), $(wildcard *.js **/*.js))
+SOURCE_FILES = $(filter-out $(wildcard *.cjs src/*.cjs), $(wildcard *.js src/*.mjs))
 DIST_FILES = $(patsubst %.js, %.cjs, $(SOURCE_FILES) )
 
 all: $(DIST_FILES)

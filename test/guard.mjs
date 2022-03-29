@@ -1,7 +1,7 @@
 "use strict"
 
 import tap from "tap"
-import {guard, guards} from "../src/guard.cjs"
+import {guard, guards} from "../src/guard.mjs"
 
 function divide(a, b) {
 	return a/b

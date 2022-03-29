@@ -1,7 +1,3 @@
-# Transpiled files
-# line disabled because codecov needs the transpiled file to not 404  **/*.cjs.js
-**/*.cjs.js.map
-
 # NPM
 node_modules
 

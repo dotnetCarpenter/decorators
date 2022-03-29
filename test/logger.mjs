@@ -1,7 +1,7 @@
 "use strict"
 
 import tap from "tap"
-import makeLogging from "../src/logger.cjs"
+import makeLogging from "../src/logger.mjs"
 
 function work(a,b) { /* arbitrary function */ }
 

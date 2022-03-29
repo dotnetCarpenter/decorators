@@ -1,7 +1,7 @@
 "use strict"
 
 import tap from "tap"
-import makeCaching from "../src/cache.cjs"
+import makeCaching from "../src/cache.mjs"
 
 function work(...args) { return args.reduce((a,b) => a + Math.random()*b, Math.random()) }
 function workWithObject(obj) { return work.apply(null, Object.values(obj)) }
