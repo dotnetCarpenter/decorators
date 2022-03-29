@@ -15,6 +15,8 @@
   },
   "scripts": {
     "babel": "babel",
-    "test": "make --jobs=4 && tap test/*.mjs --coverage-report=json && codecov --file=coverage/coverage-final.json --disable=gcov --token=e2ad30a7-2df2-4f52-baa4-2cdf4734056a"
+    "make": "make --jobs=4",
+    "codecov": "npm_config_codecov && codecov --file=coverage/coverage-final.json --disable=gcov --token=npm_config_codecov",
+    "test": "npm run make && tap test/*.mjs --coverage-report=json && npm run codecov"
   }
 }
