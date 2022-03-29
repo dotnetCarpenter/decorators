@@ -6,6 +6,7 @@
     "url": "https://github.com/dotnetCarpenter/decorators.git"
   },
   "description": "http://javascript.info/tutorial/decorators",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.8",
@@ -17,7 +18,7 @@
     "babel": "babel",
     "make": "make --jobs=4",
     "test": "tap test/*.cjs --coverage-map=tap-map.js",
-    "posttest": "tap --coverage-report=text-lcov | codecov --pipe",
+    "posttest": "tap --coverage-report=text-lcov",
     "test:result": "npm run test -- --coverage-report lcov"
   }
 }

@@ -30,15 +30,16 @@ jobs:
       - run: npm install
         env:
           CI: true
-
-      - name: Unit test
-        uses: codecov/codecov-action@v2
-        with:
-          CI: true
-          token: e2ad30a7-2df2-4f52-baa4-2cdf4734056a
-          flags: unittests
-          fail_ci_if_error: true
-          verbose: true
-
       - run: npm test
+
+      # - name: Code Cov
+      #   uses: codecov/codecov-action@v2
+      #   with:
+      #     CI: true
+      #     token: e2ad30a7-2df2-4f52-baa4-2cdf4734056a
+      #     files: ./coverage/lcov.info
+      #     flags: unittests
+      #     fail_ci_if_error: true
+      #     verbose: true
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
