@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dotnetCarpenter/decorators.svg?branch=master)](https://travis-ci.org/dotnetCarpenter/decorators)
+[![Test with code coverage](https://github.com/dotnetCarpenter/decorators/actions/workflows/unit-test-with-code-coverage.yml/badge.svg)](https://github.com/dotnetCarpenter/decorators/actions/workflows/unit-test-with-code-coverage.yml)
 [![codecov](https://codecov.io/gh/dotnetCarpenter/decorators/branch/master/graph/badge.svg)](https://codecov.io/gh/dotnetCarpenter/decorators)
 
 
@@ -14,7 +14,7 @@ Use either esm import or CommonJS.
 E.g.
 
 ```js
-import logger from "src/logger.js"
+import logger from "src/logger.mjs"
 
 // or
 
@@ -26,7 +26,7 @@ const logger = require "src/logger.cjs"
 Where `work` is your function, that you want to log calls to.
 
 ```js
-import logger from "src/logger.js"
+import logger from "src/logger.mjs"
 
 work = logger(work)
 work(1,2)
@@ -38,7 +38,7 @@ Or if you want to do something with the logs, you can provide your own
 log handler function.
 
 ```js
-import logger from "src/logger.js"
+import logger from "src/logger.mjs"
 
 const logs = []
 work = logger(work, log => logs.push(log)) // add a function to be called for each log
@@ -52,7 +52,7 @@ work.outputLog() // will fill the logs array with logs
 Where `slow` is your function, that you want to speed up.
 
 ```js
-import memoize from "src/cache.js"
+import memoize from "src/cache.mjs"
 
 const speedy = memoize(slow)
 let a = speedy(22) // call slow with 22 and return the result
@@ -60,10 +60,10 @@ let b = speedy(22) // returns the previous result
 ```
 
 `memoize` can also have a context. Which is useful when you use
-prototypal inheritance or objects.
+prototypal inheritance or objects with methods.
 
 ```js
-import memoize from "src/cache.js"
+import memoize from "src/cache.mjs"
 
 class MyClass {
 	constructor() {
@@ -111,7 +111,7 @@ performance.
 Where `work` will return nonsense if the second argument is zero.
 
 ```js
-import {guard, guards} from "src/guard.js"
+import {guard, guards} from "src/guard.mjs"
 
 work = guard(work, guards.zero(1)) // default error for guards.zero is TypeError
 work(32,0) // will throw a TypeError
@@ -120,7 +120,7 @@ work(32,0) // will throw a TypeError
 Or with a custom error:
 
 ```js
-import {guard, guards} from "src/guard.js"
+import {guard, guards} from "src/guard.mjs"
 
 work = guard(work, guards.zero(1, new RangeError("Second argument to work MUST be between 1-100")))
 work(32,0) // will throw a RangeError with the message: "Second argument to work MUST be between 1-100"
@@ -130,7 +130,7 @@ work(32,0) // will throw a RangeError with the message: "Second argument to work
 Where `work` takes an object as first argument and we want to throw if a property is *falsy*.
 
 ```js
-import {guard} from "src/guard.js"
+import {guard} from "src/guard.mjs"
 
 work = guard(work, (...args) => {
 	if( !args[0].requiredProperty ) throw new TypeError("options.requiredProperty MUST be set")

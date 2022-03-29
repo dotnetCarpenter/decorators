@@ -15,7 +15,6 @@
   },
   "scripts": {
     "babel": "babel",
-    "make": "make --jobs=4",
     "test": "tap test/*.cjs --coverage-map=tap-map.js",
     "coverage": "tap --coverage-report=text-lcov > lcov.info",
     "test:result": "npm run test -- --coverage-report lcov"

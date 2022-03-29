@@ -1,27 +1,31 @@
 /*
-Create a function makeCaching(f) which takes a one-argument function f(arg),
+Create a function memoize (f) which takes function f (arg),
 and makes a wrapper over it which caches calls.
 The wrapper should have a static flush() method to flush the cache.
-Function f is allowed to have only one argument.
-Since we have the spread operator we accept multiple arguments
-as an array - hence it's still a single argument.
 */
 "use strict"
 
-function makeCaching(f, context) {
-	const cache = new Map()
+/**
+ *
+ * @param {function} f
+ * @param {object} context
+ * @returns {{(...args:any) => any}}
+ */
+function memoize (f, context) {
+	const cache = new Map ()
 
-	decorator.flush = cache.clear.bind(cache)
+	decorator.flush = cache.clear.bind (cache)
 
-	function decorator(...args) {
-		const key = JSON.stringify(args)
-		return cache.has(key) ?
-			cache.get(key) :
-				cache.set(key, context ? f.call(context, ...args) : f(...args))	// context switching is expensive so we only do it if necessary
-					.get(key)
+	function decorator (...args) {
+		const key = JSON.stringify (args)
+		return cache.has (key)
+			? cache.get (key)
+			: cache.set (key, context
+				? f.call (context, ...args) // context switching is expensive so we only do it if necessary
+				: f (...args)).get (key)
 	}
 	return decorator
 }
-// No modifications of work are allowed. Your code should reside only in makeCaching.
+// No modifications of work are allowed. Your code should reside only in memoize.
 
-export default makeCaching
+export default memoize
